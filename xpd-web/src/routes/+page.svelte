@@ -49,7 +49,7 @@
         })
         viewListen(blockThreeHeader, (isView) => {
             if (!isView) {
-                glitch.style.color = 'rgb(2, 122, 191, 0.3)';
+                glitch.style.color = 'rgb(2, 122, 191, 0.2)';
                 isNumberBlock = false;
                 fillElementWithRandomText(glitch);
                 return
@@ -90,8 +90,8 @@
 
     function fillElementWithRandomText(element: HTMLElement, validCharacters: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?') {
         let randomText = '';
-        let charactersWidth = element.clientWidth / 10;
-        let charactersHeight = element.clientHeight / 6;
+        let charactersWidth = element.clientWidth / 15;
+        let charactersHeight = element.clientHeight / 10;
         for (let i = 0; i < charactersWidth * charactersHeight; i++) {
             randomText += validCharacters.charAt(Math.floor(Math.random() * validCharacters.length));
         }
@@ -151,7 +151,7 @@
     height: 100vh;
     background: #000;
     z-index: -1;
-    color: rgb(2, 122, 191, 0.3);
+    color: rgb(2, 122, 191, 0.1);
     font-family: "JetBrains Mono", monospace;
     font-size: 15px;
     line-height: 15px;
@@ -197,6 +197,7 @@
       width: 10vw;
       opacity: 0;
       transform: translateY(20px);
+      padding-left: 10px;
 
       &:active {
         transform: scale(0.96);
@@ -261,6 +262,7 @@
     margin-top: 0;
     margin-bottom: 0;
     line-height: 9vw;
+    padding-left: 10px;
 
     transition: opacity 1s cubic-bezier(.51, .54, 0, 1), transform 1s cubic-bezier(.51, .54, 0, 1);
   }
@@ -274,6 +276,8 @@
     line-height: 2vw;
     opacity: 0;
     margin: 0 0 0 0.5vw;
+    padding-left: 20px;
+    padding-right: 20px;
 
     animation: fadeUp 0.7s ease forwards;
     animation-delay: 0.2s;
@@ -282,6 +286,10 @@
       font-size: 4vw;
       line-height: 4vw;
     }
+  }
+
+  .top-description {
+    padding-left: 10px;
   }
 
   .information-header, .paywall-header, .os-header {
@@ -295,6 +303,8 @@
     line-height: 8vw;
     text-align: center;
     opacity: 1;
+    padding-left: 20px;
+    padding-right: 20px;
 
     transition: opacity 1s cubic-bezier(.51, .54, 0, 1), transform 1s cubic-bezier(.51, .54, 0, 1);
 
@@ -312,7 +322,7 @@
     opacity: 0.9;
 
     @media (max-width: 700px) {
-      font-size: 3vw;
+      font-size: 4vw;
     }
   }
 
@@ -347,7 +357,6 @@
   .os-description {
     color: white;
     text-align: center;
-    padding: 0 10px 10px;
   }
 
   .os-description a {
