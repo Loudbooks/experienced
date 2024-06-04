@@ -36,7 +36,8 @@
     <header bind:this={header}>
         <a href="/" bind:this={h1}>EXPERIENCED</a>
         <buttons>
-            <a href="https://discord.com/api/oauth2/authorize?client_id=1035970092284002384&permissions=0&scope=bot%20applications.commands" class="header-button">INVITE</a>
+            <a href="https://discord.com/api/oauth2/authorize?client_id=1035970092284002384&permissions=0&scope=bot%20applications.commands"
+               class="header-button">INVITE</a>
             <a href="privacy" class="header-button">PRIVACY</a>
             <a href="terms" class="header-button">TERMS</a>
             <a href="https://github.com/sponsors/randomairborne" class="header-button">DONATE</a>
@@ -82,7 +83,7 @@
     }
 
     @media (max-width: 700px) {
-        font-size: 30px;
+      font-size: 22px;
     }
 
     &:hover {
@@ -93,6 +94,10 @@
   buttons {
     display: flex;
     gap: 10px;
+
+    @media (max-width: 700px) {
+      gap: 7px;
+    }
   }
 
   buttons a {
@@ -118,7 +123,9 @@
     }
 
     @media (max-width: 700px) {
-        font-size: 16px;
+      font-size: 11px;
+      margin-left: 0px;
+      padding: 0 2px;
     }
   }
 </style>
