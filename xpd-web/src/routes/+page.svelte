@@ -80,11 +80,11 @@
             let x = event.clientX / window.innerWidth;
             let y = event.clientY / window.innerHeight;
             glitch.style.transform = `scale(1.7) translate(-${x * 100}px, -${y * 100}px)`;
-            if (isNumberBlock) {
+/*            if (isNumberBlock) {
                 fillElementWithRandomText(glitch, '¥£¢€৳₮₢₦₭ƒ₱₠₲$₳₺')
             } else {
                 fillElementWithRandomText(glitch);
-            }
+            }*/
         })
     })
 
