@@ -153,8 +153,8 @@
     z-index: -1;
     color: rgb(2, 122, 191, 0.1);
     font-family: "JetBrains Mono", monospace;
-    font-size: 15px;
-    line-height: 15px;
+    font-size: 30px;
+    line-height: 30px;
     word-wrap: break-word;
     word-break: break-all;
     transform: scale(1.7);
