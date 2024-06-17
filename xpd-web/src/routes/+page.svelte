@@ -3,7 +3,7 @@
     import {revealWord, viewListen} from "$lib/animations";
     import Header from "../components/Header.svelte";
 
-    let pageHeader;
+    let pageHeader: HTMLElement;
 
     let header: HTMLElement;
     let description: HTMLElement
@@ -107,10 +107,12 @@
         <block-one>
             <h1 class="top-header" bind:this={header}>EXPERIENCED</h1>
             <p class="top-description" bind:this={description}>LEVEL UP YOUR DISCORD EXPERIENCE</p>
-            <a class="home-button" bind:this={inviteButton} href="https://discord.com/api/oauth2/authorize?client_id=1035970092284002384&permissions=0&scope=bot%20applications.commands">INVITE</a>
-            <a class="home-button" bind:this={inviteButton} href="https://github.com/sponsors/randomairborne">DONATE</a>
-            <a class="home-button" bind:this={inviteButton} href="terms">TERMS</a>
-            <a class="home-button" bind:this={inviteButton} href="privacy">PRIVACY</a>
+            <buttons>
+                <a class="home-button" bind:this={inviteButton} href="https://discord.com/api/oauth2/authorize?client_id=1035970092284002384&permissions=0&scope=bot%20applications.commands">INVITE</a>
+                <a class="home-button" bind:this={inviteButton} href="https://github.com/sponsors/randomairborne">DONATE</a>
+                <a class="home-button" bind:this={inviteButton} href="terms">TERMS</a>
+                <a class="home-button" bind:this={inviteButton} href="privacy">PRIVACY</a>
+            </buttons>
 
         </block-one>
     </div>
@@ -120,7 +122,7 @@
             <h1 class="information-header" bind:this={blockTwoHeader}>Customizable Cards</h1>
             <p class="information-description" bind:this={blockTwoDescription}>Create your own cards with custom images
                 and text</p>
-            <img bind:this={img} src="https://cdn.loudbook.dev/files/card.png" alt="example card" width="700px"/>
+            <enhanced:img bind:this={img} src="$lib/assets/card.png" alt="example card"/>
         </block-two>
     </div>
 
@@ -133,7 +135,7 @@
     </div>
 
     <div class="block-wrapper">
-        <img class="os-background" src="https://cdn.loudbook.dev/files/github.svg" alt="GitHub Logo" width="400px"/>
+        <enhanced:img class="os-background" src="$lib/assets/github.svg" alt="GitHub Logo"/>
         <block-four>
             <h1 bind:this={blockFourHeader} class="os-header">Open Source</h1>
             <p class="os-description">This project is open source and available on <a href="github.com">GitHub</a>. Feel
@@ -175,42 +177,52 @@
   }
 
   block-one {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     height: 100vh;
-    width: 100vw;
     margin: 0;
     background-repeat: no-repeat;
     background-position: 100px 100px;
+    text-align: center;
+    width: 100%;
 
-    a {
-      transition: color 0.5s ease, transform 0.5s ease, opacity 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-      display: block;
-      color: #00a1ff;
-      font-family: 'Gabarito', sans-serif;
-      font-weight: 900;
-      font-size: 2vw;
-      line-height: 2vw;
-      margin-left: 0.6vw;
-      width: 10vw;
-      opacity: 0;
-      transform: translateY(20px);
-      padding-left: 10px;
+    buttons {
+      margin-top: 20px;
 
-      &:active {
-        transform: scale(0.96);
+      a {
+        transition: color 0.5s ease, transform 0.5s ease, opacity 0.5s ease;
+
+
+        display: inline-block;
+        color: #00a1ff;
+        font-family: 'Gabarito', sans-serif;
+        font-weight: 900;
+        font-size: 2vw;
+        line-height: 2vw;
+        width: 10vw;
+        padding: 10px;
+        opacity: 0;
+        transform: translateY(20px);
+
+        &:active {
+          transform: scale(0.96);
+        }
+
+        &:hover {
+          opacity: 0.8;
+        }
+
+        @media (max-width: 700px) {
+          font-size: 3vw;
+          line-height: 4vw;
+        }
       }
+    }
 
-      &:hover {
-        opacity: 0.8;
-      }
-
-      @media (max-width: 700px) {
-        font-size: 4vw;
-        line-height: 4vw;
-      }
+    @media (max-width: 700px) {
     }
   }
 
@@ -261,10 +273,15 @@
     font-size: 13vw;
     margin-top: 0;
     margin-bottom: 0;
-    line-height: 9vw;
-    padding-left: 10px;
+    line-height: 13vw;
+    text-align: center;
+    width: 100%;
 
     transition: opacity 1s cubic-bezier(.51, .54, 0, 1), transform 1s cubic-bezier(.51, .54, 0, 1);
+
+    &::selection {
+      background: transparent;
+    }
   }
 
   .top-description, .information-description, .paywall-description, .os-description {
@@ -289,7 +306,9 @@
   }
 
   .top-description {
-    padding-left: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    width: 100%;
   }
 
   .information-header, .paywall-header, .os-header {
@@ -331,6 +350,8 @@
     width: 60%;
     justify-self: center;
     align-self: center;
+    margin: auto;
+    display: grid;
     opacity: 0;
 
     transition: opacity 1s cubic-bezier(.51, .54, 0, 1), transform 1s cubic-bezier(.51, .54, 0, 1);
